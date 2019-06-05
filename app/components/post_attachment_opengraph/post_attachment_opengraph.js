@@ -68,9 +68,9 @@ export default class PostAttachmentOpenGraph extends PureComponent {
         this.mounted = false;
     }
 
-    fetchData = (url, openGraphData) => {
+    fetchData = async (url, openGraphData) => {
         if (!openGraphData) {
-            this.props.actions.getOpenGraphMetadata(url);
+            await this.props.actions.getOpenGraphMetadata(url);
         }
     };
 

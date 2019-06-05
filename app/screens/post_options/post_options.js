@@ -354,9 +354,9 @@ export default class PostOptions extends PureComponent {
             }, {
                 text: formatMessage({id: 'post_info.del', defaultMessage: 'Delete'}),
                 style: 'destructive',
-                onPress: () => {
-                    actions.deletePost(post);
-                    actions.removePost(post);
+                onPress: async () => {
+                    await actions.deletePost(post);
+                    await actions.removePost(post);
                     this.closeWithAnimation();
                 },
             }]
@@ -393,8 +393,8 @@ export default class PostOptions extends PureComponent {
         const {actions, post} = this.props;
 
         this.closeWithAnimation();
-        requestAnimationFrame(() => {
-            actions.unflagPost(post.id);
+        requestAnimationFrame(async () => {
+            await actions.unflagPost(post.id);
         });
     };
 

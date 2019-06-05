@@ -108,14 +108,14 @@ describe('PostOptions', () => {
         expect(wrapper.findWhere((node) => node.key() === 'reply')).toMatchObject({});
     });
 
-    test('should remove post after delete', () => {
+    test('should remove post after delete', async () => {
         const wrapper = getWrapper();
 
         wrapper.findWhere((node) => node.key() === 'delete').simulate('press');
         expect(Alert.alert).toBeCalled();
 
         // Trigger on press of Delete in the Alert
-        Alert.alert.mock.calls[0][2][1].onPress();
+        await Alert.alert.mock.calls[0][2][1].onPress();
 
         expect(actions.deletePost).toBeCalled();
         expect(actions.removePost).toBeCalled();
